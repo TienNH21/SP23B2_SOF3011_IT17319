@@ -9,12 +9,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 @WebServlet({
-    "/khach-hang/index",
-    "/khach-hang/create",
-    "/khach-hang/store",
-    "/khach-hang/edit",
-    "/khach-hang/update",
-    "/khach-hang/delete",
+    "/khach-hang/index",    // GET
+    "/khach-hang/create",   // GET
+    "/khach-hang/store",    // POST
+    "/khach-hang/edit",     // GET
+    "/khach-hang/update",   // POST
+    "/khach-hang/delete",   // GET
 })
 public class KhachHangServlet extends HttpServlet {
     private ArrayList<QLKhachHang> ds = new ArrayList<>();
@@ -24,7 +24,16 @@ public class KhachHangServlet extends HttpServlet {
         HttpServletRequest request,
         HttpServletResponse response
     ) throws ServletException, IOException {
-        this.create(request, response);
+        String uri = request.getRequestURI();
+        if (uri.contains("create") == true) {
+            this.create(request, response);
+        } else if (uri.contains("edit") == true) {
+//            this.edit(request, response);
+        } else if (uri.contains("delete") == true) {
+//            this.delete(request, response);
+        } else {
+            this.index(request, response);
+        }
     }
 
     public void create(
@@ -32,6 +41,17 @@ public class KhachHangServlet extends HttpServlet {
         HttpServletResponse response
     ) throws ServletException, IOException {
         request.getRequestDispatcher("/views/khach_hang/create.jsp")
+            .forward(request, response);
+    }
+
+    protected void index(
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws ServletException, IOException {
+        ds.add(new QLKhachHang("AAA","AAA","AAA","AAA","AAA","AAA","AAA","AAA","AAA","AAA"));
+        ds.add(new QLKhachHang("BBB","BBB","AAA","AAA","AAA","AAA","AAA","AAA","AAA","AAA"));
+        request.setAttribute("ds", ds);
+        request.getRequestDispatcher("/views/khach_hang/index.jsp")
             .forward(request, response);
     }
 
