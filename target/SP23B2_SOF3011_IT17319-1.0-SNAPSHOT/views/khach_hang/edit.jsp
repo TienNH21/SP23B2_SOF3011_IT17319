@@ -14,11 +14,11 @@
 <body>
     <div class="col-8 offset-2 mt-3">
         <form method="POST"
-          action="/SP23B2_SOF3011_IT17319_war_exploded/khach-hang/update">
+          action="/SP23B2_SOF3011_IT17319_war_exploded/khach-hang/update?ma=${ qlkh.ma }">
             <div class="row">
                 <div class="col-6">
                     <label>Mã</label>
-                    <input type="text" name="ma" class="form-control" value="${ qlkh.ma }" />
+                    <input type="text" name="ma" class="form-control" value="${ qlkh.ma }" disabled />
                 </div>
                 <div class="col-6">
                     <label>Tên</label>

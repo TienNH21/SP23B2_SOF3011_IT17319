@@ -3,10 +3,12 @@ package controllers.admin;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import org.apache.commons.beanutils.BeanUtils;
 import repositories.KhachHangRepository;
 import view_models.QLKhachHang;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 @WebServlet({
@@ -92,14 +94,35 @@ public class KhachHangServlet extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws ServletException, IOException {
-        this.store(request, response);
+        String uri = request.getRequestURI();
+        if (uri.contains("store")) {
+            this.store(request, response);
+        } else if (uri.contains("update")) {
+            this.update(request, response);
+        } else {
+            response.sendRedirect("/SP23B2_SOF3011_IT17319_war_exploded/khach-hang/index");
+        }
     }
 
     protected void store(
             HttpServletRequest request,
             HttpServletResponse response
     ) throws ServletException, IOException {
-        System.out.println("Hello aaa");
+        QLKhachHang kh = new QLKhachHang();
+        try {
+            BeanUtils.populate(kh, request.getParameterMap());
+            this.khRepo.insert(kh);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected void update(
+        HttpServletRequest request,
+        HttpServletResponse response
+    ) throws ServletException, IOException {
         String ma = request.getParameter("ma");
         String ho = request.getParameter("ho");
         String tenDem = request.getParameter("ten_dem");
@@ -110,9 +133,10 @@ public class KhachHangServlet extends HttpServlet {
         String thanhPho = request.getParameter("thanh_pho");
         String quocGia = request.getParameter("quoc_gia");
         String matKhau = request.getParameter("mat_khau");
-
+//
         QLKhachHang kh = new QLKhachHang(ma, ten, tenDem, ho, ngaySinh, sdt, diaChi, matKhau, quocGia, thanhPho);
-        this.khRepo.insert(kh);
+        this.khRepo.update(kh);
+        response.sendRedirect("/SP23B2_SOF3011_IT17319_war_exploded/khach-hang/index");
     }
 }
 
