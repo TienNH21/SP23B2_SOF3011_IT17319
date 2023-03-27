@@ -44,13 +44,13 @@
                         <tr>
                             <td>${ kh.ma }</td>
                             <td>${ kh.ho }</td>
-                            <td>${ kh.ten_dem }</td>
+                            <td>${ kh.tenDem }</td>
                             <td>${ kh.ten }</td>
-                            <td>${ kh.ngay_sinh }</td>
+                            <td>${ kh.ngaySinh }</td>
                             <td>${ kh.sdt }</td>
-                            <td>${ kh.dia_chi }</td>
-                            <td>${ kh.thanh_pho }</td>
-                            <td>${ kh.quoc_gia }</td>
+                            <td>${ kh.diaChi }</td>
+                            <td>${ kh.thanhPho }</td>
+                            <td>${ kh.quocGia }</td>
                             <td>
                                 <a class="btn btn-primary"
                                    href="/SP23B2_SOF3011_IT17319_war_exploded/khach-hang/edit?ma=${ kh.ma }">

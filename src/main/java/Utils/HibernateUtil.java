@@ -1,12 +1,14 @@
 package Utils;
 
 import DomainModels.KhachHang;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
+import java.sql.Date;
 import java.util.Properties;
 
 public class HibernateUtil {
@@ -36,6 +38,18 @@ public class HibernateUtil {
     }
 
     public static void main(String[] args) {
-        System.out.println(getFACTORY());
+        Session s = HibernateUtil
+                .getFACTORY()
+                .openSession();
+        try {
+            s.getTransaction().begin();
+            s.save(new KhachHang(null, "PH1", "AAA", "Van", "Nguyen", new Date(1000000000), "0123123123", "HN", "HN", "VN", "1"));
+//            System.out.println(getFACTORY());
+            System.out.println("OK");
+            s.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            s.getTransaction().rollback();
+        }
     }
 }

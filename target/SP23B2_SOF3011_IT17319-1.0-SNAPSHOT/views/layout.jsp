@@ -51,7 +51,7 @@
 
     <div class="row">
         <div class="col-3 bg-warning">Sidebar</div>
-        <div class="col-9" style="min-height: 1000px">
+        <div class="col-9" style="min-height: 600px">
             <jsp:include page="${ view }"></jsp:include>
         </div>
     </div>

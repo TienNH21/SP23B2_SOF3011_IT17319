@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col-6">
                     <label>Tên đệm</label>
-                    <input type="text" name="ten_dem" class="form-control" value="${ qlkh.ten_dem }" />
+                    <input type="text" name="tenDem" class="form-control" value="${ qlkh.tenDem }" />
                 </div>
                 <div class="col-6">
                     <label>Họ</label>
@@ -38,7 +38,7 @@
             <div class="row">
                 <div class="col-6">
                     <label>Ngày sinh</label>
-                    <input type="text" name="ngay_sinh" class="form-control" />
+                    <input type="text" name="ngaySinh" class="form-control" />
                 </div>
                 <div class="col-6">
                     <label>SDT</label>
@@ -48,25 +48,25 @@
             <div class="row">
                 <div class="col-6">
                     <label>Địa chỉ</label>
-                    <input type="text" name="dia_chi" class="form-control" />
+                    <input type="text" name="diaChi" class="form-control" />
                 </div>
                 <div class="col-6">
                     <label>Mật khẩu</label>
-                    <input type="password" name="mat_khau" class="form-control" />
+                    <input type="password" name="matKhau" class="form-control" />
                 </div>
             </div>
             <div class="row">
                 <div class="col-6">
                     <label>Quốc gia</label>
-                    <select name="quoc_gia" class="form-select">
-                        <option value="vn" ${ qlkh.quoc_gia == "vn" ? "selected" : "" }>Việt Nam</option>
-                        <option value="lao" ${ qlkh.quoc_gia == "lao" ? "selected" : "" }>Lào</option>
-                        <option value="campuchia" ${ qlkh.quoc_gia == "campuchia" ? "selected" : "" }>Campuchia</option>
+                    <select name="quocGia" class="form-select">
+                        <option value="vn" ${ qlkh.quocGia == "vn" ? "selected" : "" }>Việt Nam</option>
+                        <option value="lao" ${ qlkh.quocGia == "lao" ? "selected" : "" }>Lào</option>
+                        <option value="campuchia" ${ qlkh.quocGia == "campuchia" ? "selected" : "" }>Campuchia</option>
                     </select>
                 </div>
                 <div class="col-6">
                     <label>Thành phố</label>
-                    <select name="thanh_pho" class="form-select">
+                    <select name="thanhPho" class="form-select">
                         <option>Hà Nội</option>
                         <option>Đà Nẵng</option>
                     </select>

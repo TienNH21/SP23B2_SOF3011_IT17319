@@ -3,14 +3,15 @@ package DomainModels;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.util.UUID;
 
 @Entity
 @Table(name="KhachHang")
 public class KhachHang {
     @Id
     @Column(name="Id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @Column(name="Ma")
     private String ma;
@@ -42,7 +43,7 @@ public class KhachHang {
     @Column(name="MatKhau")
     private String matKhau;
 
-    public KhachHang(String id, String ma, String ten, String tenDem, String ho, Date ngaySinh, String sdt, String diaChi, String thanhPho, String quocGia, String matKhau) {
+    public KhachHang(UUID id, String ma, String ten, String tenDem, String ho, Date ngaySinh, String sdt, String diaChi, String thanhPho, String quocGia, String matKhau) {
         this.id = id;
         this.ma = ma;
         this.ten = ten;
@@ -59,11 +60,11 @@ public class KhachHang {
     public KhachHang() {
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
