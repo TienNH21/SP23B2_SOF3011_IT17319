@@ -1,12 +1,11 @@
 package repositories;
 
-import DomainModels.KhachHang;
 import Utils.HibernateUtil;
-import ViewModels.QLKhachHang;
+import domain_models.KhachHang;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
 import org.hibernate.Session;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class KhachHangRepository {
@@ -67,5 +66,21 @@ public class KhachHangRepository {
         TypedQuery<KhachHang> q = this.hSession.createQuery(hql, KhachHang.class);
         q.setParameter(1, ma);
         return q.getSingleResult();
+    }
+
+    public KhachHang login(String ma, String matKhau)
+    {
+        String hql = "SELECT khObj FROM KhachHang khObj WHERE khObj.ma = ?1 AND khObj.matKhau = ?2";
+        TypedQuery<KhachHang> q = this.hSession.createQuery(hql, KhachHang.class);
+        q.setParameter(1, ma);
+        q.setParameter(2, matKhau);
+
+        try {
+            KhachHang kh = q.getSingleResult();
+            return kh;
+        } catch (NoResultException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

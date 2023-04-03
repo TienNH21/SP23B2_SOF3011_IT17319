@@ -1,6 +1,7 @@
 package Utils;
 
-import DomainModels.KhachHang;
+import domain_models.*;
+import jakarta.persistence.TypedQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -9,7 +10,9 @@ import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.Properties;
+import java.util.UUID;
 
 public class HibernateUtil {
     private static final SessionFactory FACTORY;
@@ -27,6 +30,18 @@ public class HibernateUtil {
 
         conf.setProperties(properties);
         conf.addAnnotatedClass(KhachHang.class);
+        conf.addAnnotatedClass(ChucVu.class);
+//        conf.addAnnotatedClass(CuaHang.class);
+        conf.addAnnotatedClass(NhanVien.class);
+//        conf.addAnnotatedClass(SanPham.class);
+//        conf.addAnnotatedClass(ChiTietSp.class);
+//        conf.addAnnotatedClass(DongSp.class);
+//        conf.addAnnotatedClass(GioHang.class);
+//        conf.addAnnotatedClass(GioHangChiTiet.class);
+//        conf.addAnnotatedClass(HoaDon.class);
+//        conf.addAnnotatedClass(HoaDonChiTiet.class);
+//        conf.addAnnotatedClass(MauSac.class);
+//        conf.addAnnotatedClass(Nsx.class);
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();
         FACTORY = conf.buildSessionFactory(registry);
@@ -41,15 +56,15 @@ public class HibernateUtil {
         Session s = HibernateUtil
                 .getFACTORY()
                 .openSession();
-        try {
-            s.getTransaction().begin();
-            s.save(new KhachHang(null, "PH1", "AAA", "Van", "Nguyen", new Date(1000000000), "0123123123", "HN", "HN", "VN", "1"));
-//            System.out.println(getFACTORY());
-            System.out.println("OK");
-            s.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            s.getTransaction().rollback();
-        }
+
+        String hql = "SELECT obj FROM ChucVu obj WHERE obj.ma = ?1";
+        TypedQuery<ChucVu> q = s.createQuery(hql, ChucVu.class);
+        q.setParameter(1, "1");
+        ChucVu cv = q.getSingleResult();
+        System.out.println(cv.getTen());
+
+        List<NhanVien> listNv = cv.getListNhanVien();
+        NhanVien nv = listNv.get(0);
+        System.out.println(nv.getTen());
     }
 }

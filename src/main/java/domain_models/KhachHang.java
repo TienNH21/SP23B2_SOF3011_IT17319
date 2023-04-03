@@ -1,61 +1,47 @@
-package DomainModels;
+package domain_models;
 
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.util.Collection;
 import java.util.UUID;
 
 @Entity
-@Table(name="KhachHang")
 public class KhachHang {
     @Id
     @Column(name="Id")
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(name="Ma")
+    @Column(name = "Ma")
     private String ma;
 
-    @Column(name="Ten")
+    @Column(name = "Ten")
     private String ten;
 
-    @Column(name="TenDem")
+    @Column(name = "TenDem")
     private String tenDem;
 
-    @Column(name="Ho")
+    @Column(name = "Ho")
     private String ho;
 
-    @Column(name="NgaySinh")
+    @Column(name = "NgaySinh")
     private Date ngaySinh;
 
-    @Column(name="Sdt")
+    @Column(name = "Sdt")
     private String sdt;
 
-    @Column(name="DiaChi")
+    @Column(name = "DiaChi")
     private String diaChi;
 
-    @Column(name="ThanhPho")
+    @Column(name = "ThanhPho")
     private String thanhPho;
 
-    @Column(name="QuocGia")
+    @Column(name = "QuocGia")
     private String quocGia;
 
-    @Column(name="MatKhau")
+    @Column(name = "MatKhau")
     private String matKhau;
-
-    public KhachHang(UUID id, String ma, String ten, String tenDem, String ho, Date ngaySinh, String sdt, String diaChi, String thanhPho, String quocGia, String matKhau) {
-        this.id = id;
-        this.ma = ma;
-        this.ten = ten;
-        this.tenDem = tenDem;
-        this.ho = ho;
-        this.ngaySinh = ngaySinh;
-        this.sdt = sdt;
-        this.diaChi = diaChi;
-        this.thanhPho = thanhPho;
-        this.quocGia = quocGia;
-        this.matKhau = matKhau;
-    }
 
     public KhachHang() {
     }

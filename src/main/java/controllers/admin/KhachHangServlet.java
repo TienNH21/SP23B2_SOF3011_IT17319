@@ -1,12 +1,11 @@
 package controllers.admin;
 
-import DomainModels.KhachHang;
+import domain_models.KhachHang;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import org.apache.commons.beanutils.BeanUtils;
 import repositories.KhachHangRepository;
-import ViewModels.QLKhachHang;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;

@@ -19,7 +19,7 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
-          <factory-entry name="SP23B2_SOF3011_IT17319" />
+          <factory-entry name="SP23B2_SOF3011_IT17319" value="93955a91-8366-4c3f-b0ff-35a25657345c" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>
