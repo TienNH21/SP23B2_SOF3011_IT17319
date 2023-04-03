@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-    <div class="alert">
+    <div class="alert alert-danger">
         ${ error_message }
     </div>
     <form action="/SP23B2_SOF3011_IT17319_war_exploded/login" method="post">
